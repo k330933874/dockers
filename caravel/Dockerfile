@@ -1,4 +1,4 @@
-FROM hub.coloseo.io/amancevice/pandas:0.18.1
+FROM hub.coloseo.io/amancevice/pandas:0.18.1-python3
 MAINTAINER Ging.Wu <ging.wu@coloseo.cn>
 
 # Install
@@ -13,7 +13,7 @@ RUN apk update && \
         libffi-dev \
         mariadb-dev \
         postgresql-dev && \
-    pip install \
+    pip3 install \
         caravel==$CARAVEL_VERSION \
         mysqlclient==1.3.7 \
         psycopg2==2.6.1 \
@@ -42,6 +42,6 @@ USER caravel
 # Deploy
 VOLUME $CARAVEL_HOME
 EXPOSE 8088
-# HEALTHCHECK CMD ["curl", "-f", "http://localhost:8088/health"]
+HEALTHCHECK CMD ["curl", "-f", "http://localhost:8088/health"]
 ENTRYPOINT ["caravel"]
 CMD ["runserver"]
