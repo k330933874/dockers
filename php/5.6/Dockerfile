@@ -1,9 +1,6 @@
 FROM repo.coloseo.io/base:edge
 
 RUN echo '@testing http://nl.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositories
-
 RUN apk update && apk upgrade \
-  && apk add php7@testing php7-openssl@testing php7-phar@testing php7-json@testing php7-curl@testing \
+  && apk add php5 php5-openssl php5-phar php5-json php5-curl php5-dev composer@testing \
   && rm -rf /var/cache/apk/*
-
-RUN ln -s /usr/bin/php7 /usr/bin/php
