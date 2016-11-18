@@ -1,9 +1,9 @@
 FROM repo.coloseo.io/base:edge
 
-RUN echo '@edge http://nl.alpinelinux.org/alpine/edge/main' >> /etc/apk/repositories
-# RUN echo '@community http://nl.alpinelinux.org/alpine/edge/community' >> /etc/apk/repositories
-
-RUN apk update && apk upgrade \
-  && apk add nodejs@edge \
-  && npm uninstall -g npm \
-  && rm -rf /var/cache/apk/*
+RUN echo http://mirrors.aliyun.com/alpine/edge/main > /etc/apk/repositories && \
+    echo http://mirrors.aliyun.com/alpine/edge/community >> /etc/apk/repositories && \
+    echo @testing http://mirrors.aliyun.com/alpine/edge/testing >> /etc/apk/repositories && \
+    apk update && apk upgrade \
+    && apk add nodejs \
+    && npm uninstall -g npm \
+    && rm -rf /var/cache/apk/*
