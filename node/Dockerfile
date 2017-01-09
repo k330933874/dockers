@@ -1,9 +1,11 @@
-FROM repo.coloseo.io/base:edge
+FROM repo.coloseo.io/alpine:3.5
 
-RUN echo http://mirrors.aliyun.com/alpine/edge/main > /etc/apk/repositories && \
-    echo http://mirrors.aliyun.com/alpine/edge/community >> /etc/apk/repositories && \
-    echo @testing http://mirrors.aliyun.com/alpine/edge/testing >> /etc/apk/repositories && \
-    apk update && apk upgrade \
-    && apk add nodejs \
-    && npm uninstall -g npm \
+RUN apk update && apk upgrade \
+    && apk add --no-cache nodejs curl gnupg \
+    && npm uninstall -g npm
+
+RUN curl -o- -L https://yarnpkg.com/install.sh | bash \
+    && apk del curl gnupg \
     && rm -rf /var/cache/apk/*
+
+ENV PATH /root/.yarn/bin:$PATH
