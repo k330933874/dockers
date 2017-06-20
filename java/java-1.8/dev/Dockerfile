@@ -1,11 +1,9 @@
-FROM repo.coloseo.io/base
+FROM repo.coloseo.io/alpine:3.6
 
-RUN echo '@edge http://nl.alpinelinux.org/alpine/edge/main' >> /etc/apk/repositories \
-  && echo '@community http://nl.alpinelinux.org/alpine/edge/community' >> /etc/apk/repositories \
-  && apk update \
+RUN  apk update \
   && apk upgrade \
-  && apk add openjdk8@community \
-  && apk add maven@community \
+  && apk add openjdk8 \
+  && apk add maven \
   && rm -rf /var/cache/apk/*
 
 # puts javac in the PATH

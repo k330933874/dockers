@@ -1,9 +1,6 @@
-FROM repo.coloseo.io/base
+FROM repo.coloseo.io/alpine:3.6
 
-# openjdk-8-base contains no GUI support. see https://pkgs.alpinelinux.org/package/testing/x86_64/openjdk8-jre-base
-RUN echo '@edge http://nl.alpinelinux.org/alpine/edge/main' >> /etc/apk/repositories \
-  && echo '@community http://nl.alpinelinux.org/alpine/edge/community' >> /etc/apk/repositories \
-  && apk update \
+RUN apk update \
   && apk upgrade \
-  && apk add openjdk8-jre-base@community \
+  && apk add openjdk8-jre-base \
   && rm -rf /var/cache/apk/*
