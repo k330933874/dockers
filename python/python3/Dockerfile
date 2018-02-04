@@ -1,5 +1,3 @@
-FROM repo.coloseo.io/base
+FROM python:3.6-jessie
 
-RUN apk update && apk upgrade \
-  && apk add python3 \
-  && rm -rf /var/cache/apk/*
+COPY pip.conf /root/.pip/
