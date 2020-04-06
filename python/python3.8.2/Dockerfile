@@ -15,7 +15,7 @@ RUN echo http://mirrors.aliyun.com/alpine/v3.11/main > /etc/apk/repositories && 
   echo http://mirrors.aliyun.com/alpine/v3.11/community >> /etc/apk/repositories && \
   set -eux && \
   apk update && apk upgrade && \
-  apk add --no-cache --virtual .build-deps build-base libressl-dev libffi-dev gcc musl-dev python3-dev && \
+  apk add --no-cache --virtual .build-deps build-base libressl-dev libffi-dev gcc musl-dev python3-dev postgresql-dev && \
   pip install --upgrade pip setuptools wheel pipenv && \
   rm -rf /root/.cache/pip
 
