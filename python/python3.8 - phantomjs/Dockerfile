@@ -4,6 +4,10 @@ FROM python:3.8
 ENV PHANTOMJS_VERSION 1.9.7
 RUN wget --no-check-certificate -q -O - https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-$PHANTOMJS_VERSION-linux-x86_64.tar.bz2 | tar xjC /opt
 RUN ln -s /opt/phantomjs-$PHANTOMJS_VERSION-linux-x86_64/bin/phantomjs /usr/bin/phantomjs
+RUN apt-get -y update && \
+    apt-get -y upgrade && \
+    apt-get -y -q install xfonts-wqy
+
 
 # set display port to avoid crash
 ENV DISPLAY=:99
