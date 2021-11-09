@@ -26,8 +26,8 @@ RUN pip install --upgrade pip setuptools wheel pipenv && \
   rm -rf /root/.cache/pip
 
 # -- Adding Pipfiles
-ONBUILD COPY Pipfile Pipfile
-ONBUILD COPY Pipfile.lock Pipfile.lock
+# ONBUILD COPY Pipfile Pipfile
+# ONBUILD COPY Pipfile.lock Pipfile.lock
 
 # -- Install dependencies:
-ONBUILD RUN set -ex && pipenv install --deploy --system
+# ONBUILD RUN set -ex && pipenv install --deploy --system
